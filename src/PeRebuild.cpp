@@ -364,10 +364,11 @@ DWORD PeRebuild::wipeReloc(void* pMap, DWORD dwFsize)
 			//-> copy the section(s) after the relocation to the start of the relocation
 			pSH2 = pSH;
 			++pSH2; // pSH2 -> pointer to first section after relocation
+		
 			memcpy(
-				(void*)(pSH->PointerToRawData + (DWORD)pMap),
-				(const void*)(pSH2->PointerToRawData + (DWORD)pMap),
-				dwFsize - pSH2->PointerToRawData);
+				reinterpret_cast<void*>( reinterpret_cast<DWORD_PTR>( pMap ) + pSH->PointerToRawData ),
+				reinterpret_cast<const void*>( reinterpret_cast<DWORD_PTR>( pMap ) + pSH2->PointerToRawData ),
+				dwFsize - pSH2->PointerToRawData );
 
 			//-> fix the section headers
 			// (pSH -> reloc section header)

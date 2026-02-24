@@ -147,7 +147,7 @@ LONG WINAPI HandleUnknownException(struct _EXCEPTION_POINTERS *ExceptionInfo)
 	file);
 
 #ifdef _WIN64
-	swprintf_s(registerInfo, _countof(registerInfo),TEXT("rax=0x%p, rbx=0x%p, rdx=0x%p, rcx=0x%p, rsi=0x%p, rdi=0x%p, rbp=0x%p, rsp=0x%p, rip=0x%p"),
+	swprintf_s(registerInfo, _countof(registerInfo),TEXT("rax=0x%016llX, rbx=0x%016llX, rdx=0x%016llX, rcx=0x%016llX, rsi=0x%016llX, rdi=0x%016llX, rbp=0x%016llX, rsp=0x%016llX, rip=0x%016llX"),
 		ExceptionInfo->ContextRecord->Rax,
 		ExceptionInfo->ContextRecord->Rbx,
 		ExceptionInfo->ContextRecord->Rdx,
@@ -159,7 +159,7 @@ LONG WINAPI HandleUnknownException(struct _EXCEPTION_POINTERS *ExceptionInfo)
 		ExceptionInfo->ContextRecord->Rip
 		);
 #else
-	swprintf_s(registerInfo, _countof(registerInfo),TEXT("eax=0x%p, ebx=0x%p, edx=0x%p, ecx=0x%p, esi=0x%p, edi=0x%p, ebp=0x%p, esp=0x%p, eip=0x%p"),
+	swprintf_s(registerInfo, _countof(registerInfo),TEXT("eax=0x%08lX, ebx=0x%08lX, edx=0x%08lX, ecx=0x%08lX, esi=0x%08lX, edi=0x%08lX, ebp=0x%08lX, esp=0x%08lX, eip=0x%08lX"),
 		ExceptionInfo->ContextRecord->Eax,
 		ExceptionInfo->ContextRecord->Ebx,
 		ExceptionInfo->ContextRecord->Edx,

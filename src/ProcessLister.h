@@ -24,6 +24,13 @@ public:
 	Process()
 	{
 		PID = 0;
+		sessionId = 0;
+		imageBase = 0;
+		pebAddress = 0;
+		entryPoint = 0;
+		imageSize = 0;
+		filename[0] = L'\0';
+		fullPath[0] = L'\0';
 	}
 };
 

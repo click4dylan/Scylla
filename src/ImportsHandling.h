@@ -50,7 +50,7 @@ public:
 	void collapseAllTreeNodes();
 
 private:
-	DWORD numberOfFunctions;
+	//DWORD numberOfFunctions;
 
 	unsigned int m_thunkCount;
 	unsigned int m_invalidThunkCount;

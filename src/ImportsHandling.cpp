@@ -65,6 +65,8 @@ ImportsHandling::ImportsHandling(CMultiSelectTreeViewCtrl& TreeImports) : TreeIm
 	TreeIcons.AddIcon(hIconWarning);
 	TreeIcons.AddIcon(hIconError);
 
+	stringBuffer[0] = L'\0';
+
 	m_thunkCount = m_invalidThunkCount = m_suspectThunkCount = 0;
 }
 
@@ -444,7 +446,7 @@ void ImportsHandling::updateImportInTreeView(const ImportThunk * importThunk, CT
 
 void ImportsHandling::updateModuleInTreeView(const ImportModuleThunk * importThunk, CTreeItem item)
 {
-	swprintf_s(stringBuffer, L"%s (%d) FThunk: " PRINTF_DWORD_PTR_HALF, importThunk->moduleName,importThunk->thunkList.size(), importThunk->firstThunk);
+	swprintf_s(stringBuffer, L"%s (%d) FThunk: " PRINTF_DWORD_PTR_HALF, importThunk->moduleName, static_cast<int>(importThunk->thunkList.size()), importThunk->firstThunk);
 
 	item.SetText(stringBuffer);
 	Icon icon = getAppropiateIcon(importThunk->isValid());

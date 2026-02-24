@@ -47,6 +47,7 @@ public:
 
 	ModuleInfo()
 	{
+		fullPath[0] = L'\0';
 		modBaseAddr = 0;
 		modBaseSize = 0;
 		priority = 1;
